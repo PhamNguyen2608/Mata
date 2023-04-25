@@ -96,9 +96,9 @@ app.use('/api/v1/chats', chatRoutes);
 app.use('/api/v1/messages', messagesRoutes);
 app.use('/api/v1/reports', reportsRoutes);
 app.use('/api/v1/stories', storyRoutes);
-// app.use((req, res, next) => {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl}`, 404));
