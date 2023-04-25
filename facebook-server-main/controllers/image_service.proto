@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package image_service;
+
+message ImageRequest {
+  bytes image_data = 1;
+  string post_id = 2;
+}
+
+message ImageResponse {
+  string result = 1;
+}
+
+message ImageRequests {
+  repeated ImageRequest images = 1;
+}
+
+message PostIds {
+  repeated string post_ids = 1;
+}
+
+service ImageService {
+  rpc ProcessImages(ImageRequests) returns (PostIds);
+}

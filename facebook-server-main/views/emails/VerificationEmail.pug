@@ -1,0 +1,19 @@
+extend baseEmail
+
+block content
+    .headLogo 
+        img(src="https://res.cloudinary.com/dxxprbsbe/image/upload/v1679277909/Mata/mata-logo-main_jlh2ux.png" alt="" style="width: 30px")
+        span Action required : Activate your Mata  account
+    p Hello #{firstname},
+    p You recently created an account on Mata. To complete your registration, please confirm your account.
+    table.btn.btn-primary(role='presentation' border='0' cellpadding='0' cellspacing='0')
+        tbody
+            tr
+                td(align='left')
+                    table(role='presentation' border='0' cellpadding='0' cellspacing='0')
+                        tbody
+                            tr
+                                td
+                                    a(href=`${url}` target='_blank') Confirm your account
+    p Mata allows you to stay in touch with all your friends, once refistered on Mata,you can share photos,organize events and much more.
+    p - Pham Van Nguyen, CEO
