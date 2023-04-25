@@ -16,7 +16,7 @@ const friendsRoutes = require('./routes/friendsRoutes');
 const messagesRoutes = require('./routes/messagesRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const reportsRoutes = require('./routes/reportsRoutes');
-const storyRoutes =require('./routes/storyRoutes');
+const storyRoutes = require('./routes/storyRoutes');
 const app = express();
 
 const whitelist = [
@@ -26,7 +26,6 @@ const whitelist = [
   'http://192.168.1.2:8000',
   'http://localhost:3000',
   'http://localhost:4000',
-  
 ];
 const corsOptions = {
   credentials: true,
@@ -43,20 +42,6 @@ const corsOptions = {
   },
 };
 
-// const whitelist = ['http://127.0.0.1:3000', 'http://192.168.1.2:3000'];
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (!origin) {
-//       //for bypassing postman req with  no origin
-//       return callback(null, true);
-//     }
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-// };
 app.use(cors(corsOptions));
 
 const limiter = rateLimit({
@@ -86,7 +71,9 @@ app.set('view engine', 'pug');
 
 app.use(express.static('public'));
 
-app.use(express.static(path.join(__dirname, 'build')));
+// Cập nhật đường dẫn đến thư mục build của client
+const clientBuildPath = path.join(__dirname, '../facebook-main/build');
+app.use(express.static(clientBuildPath));
 
 app.use('/api/v1/admins', adminsRouter);
 app.use('/api/v1/users', usersRouter);
@@ -96,10 +83,11 @@ app.use('/api/v1/chats', chatRoutes);
 app.use('/api/v1/messages', messagesRoutes);
 app.use('/api/v1/reports', reportsRoutes);
 app.use('/api/v1/stories', storyRoutes);
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 
+// Cập nhật đường dẫn tới tệp index.html của client
+app.use((req, res, next) => {
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
+});
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl}`, 404));
 });
