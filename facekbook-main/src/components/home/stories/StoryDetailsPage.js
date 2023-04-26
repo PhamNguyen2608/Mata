@@ -20,7 +20,7 @@ function StoryDetailsPage(props) {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(
-        "http://localhost:8000/api/v1/stories/getAllStories"
+        "https://mata.onrender.com/api/v1/stories/getAllStories"
       );
       setQueuedStories(result.data.stories);
     };
