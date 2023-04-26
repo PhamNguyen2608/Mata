@@ -72,9 +72,9 @@ app.set('view engine', 'pug');
 app.use(express.static('public'));
 
 // Cập nhật đường dẫn đến thư mục build của client
-// const clientBuildPath = path.join(__dirname, '../facebook-main/build');
+const clientBuildPath = path.join(__dirname, '../facebook-main/build');
 
-// app.use(express.static(clientBuildPath));
+app.use(express.static(clientBuildPath));
 
 app.use('/api/v1/admins', adminsRouter);
 app.use('/api/v1/users', usersRouter);
@@ -86,9 +86,9 @@ app.use('/api/v1/reports', reportsRoutes);
 app.use('/api/v1/stories', storyRoutes);
 
 // Cập nhật đường dẫn tới tệp index.html của client
-// app.use((req, res, next) => {
-//   res.sendFile(path.join(clientBuildPath, 'index.html'));
-// });
+app.use((req, res, next) => {
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
+});
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl}`, 404));
