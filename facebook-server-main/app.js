@@ -72,7 +72,7 @@ app.set('view engine', 'pug');
 app.use(express.static('public'));
 
 // Cập nhật đường dẫn đến thư mục build của client
-const clientBuildPath = path.join(__dirname, '../facebook-main/build');
+const clientBuildPath = path.join(__dirname, '../facekbook-main/build');
 
 app.use(express.static(clientBuildPath));
 
