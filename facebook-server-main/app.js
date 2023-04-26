@@ -74,7 +74,7 @@ app.use(express.static('public'));
 // Cập nhật đường dẫn đến thư mục build của client
 // const clientBuildPath = path.join(__dirname, '../facebook-main/build');
 
-app.use(express.static(clientBuildPath));
+// app.use(express.static(clientBuildPath));
 
 app.use('/api/v1/admins', adminsRouter);
 app.use('/api/v1/users', usersRouter);
