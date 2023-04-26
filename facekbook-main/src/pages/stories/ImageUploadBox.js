@@ -2,7 +2,7 @@ import React, { useState, useCallback, useImperativeHandle } from "react";
 import Cropper from "react-easy-crop";
 import "./ImageUploadBox.css";
 import axios from "axios";
-import BounceLoader  from "react-spinners/BounceLoader";
+import BounceLoader from "react-spinners/BounceLoader";
 import { useNavigate } from "react-router-dom";
 
 const ImageUploadBox = React.forwardRef((props, ref) => {
@@ -80,7 +80,7 @@ const ImageUploadBox = React.forwardRef((props, ref) => {
     try {
       setUploading(true);
       await axios.post(
-        "http://localhost:8000/api/v1/stories/upload",
+        "https://mata.onrender.com/api/v1/stories/upload",
         formData,
         {
           headers: {
