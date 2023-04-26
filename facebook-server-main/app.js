@@ -26,6 +26,7 @@ const whitelist = [
   'http://192.168.1.2:8000',
   'http://localhost:3000',
   'http://localhost:4000',
+  'https://mata.onrender.com',
 ];
 const corsOptions = {
   credentials: true,
